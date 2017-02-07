@@ -8,8 +8,7 @@ James Boswell
 Principal Engineer, Charter Communications
 boswell.jim@gmail.com
 
-http://github.com/jamesboswell/
-@thejimboswell
+http://github.com/jamesboswell/nanog69/
 Thank you!
 
 * what this is not....
@@ -94,21 +93,7 @@ You will not catch this until *junk()* is called
 
 * What can you do with Go?
 
-* Examples
-
 This presentation is done with Go [present]
-- present
-- reads plain text .slide format
-
-Docker
-InfluxDB
-Kubernetes
-Etcd
-
-* SNMP/HTTP examples
-[wip]
-
-* What can you do?
 GoBGP
 
 - integrate a BGP daemon with another application
@@ -126,6 +111,9 @@ NETCONF
 gRPC
 
 - *streaming* *telemetry!!*
+
+* SNMP/HTTP examples
+[wip]
 
 
 * Who uses Go?
