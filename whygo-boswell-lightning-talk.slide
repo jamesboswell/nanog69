@@ -1,0 +1,142 @@
+#Go for Network Ops
+Why Go?
+NANOG 69 Washington, DC
+15:00 7 Feb 2017
+Tags: golang, nanog
+
+James Boswell
+Principal Engineer, Charter Communications
+boswell.jim@gmail.com
+
+http://github.com/jamesboswell/
+@thejimboswell
+
+Thank you!
+
+* what this is not....
+Not here to bash Python   .... I ❤️ Python
+Not a tutorial
+Not a comprehensive review, just my experiences
+Not a plug for Google .... (psst...Google ping me ;-)
+
+* So why did I start in Go?
+
+
+Problems with Python
+
+I wanted to write Python 3, but....
+
+- Community is split Python 2 vs Python 3
+- 2.7 still supported for 3 more years (officially*) and then ???
+- many modules not ported from 2 to 3
+- module compatiblity....ok so virtual env everything
+
+Also challenges with scaling code concurrently
+
+_"Hard"_ to do things concurrently
+Multiprocessing package works... until it doesn't
+
+A former colleague told me to learn Go...we need Go people here...
+
+*CHALLEGE* *ACCEPTED*
+
+
+* Hello world in Go
+
+#.code x.go /^func main/,/^}/ HLfmt
+.play x.go
+
+* Why Go?
+
+* Unicode support with no fuss
+.play for.go
+Go is fully UTF-8 compliant!
+
+    Hello, world!
+    สวัสดี ครับ, world!
+    你好, world!
+    😀, world!
+
+* Type Safety
+Sample Python code
+.play badinteger.py
+
+  $ python2 badinteger.py                                                                                                                                                                            130 ↵
+  16
+  42
+
+Can you avoid this in Python?  Yes you can but you MUST declare your types
+
+An integer is always an integer
+.play integer.go /^func main/,/^}/
+
+* Dynamic Typing
+
+_Dynamic_ compilation can result in errors that exist in code, but are not detected
+.code junk.py
+You will not catch this until *junk()* is called
+
+  Traceback (most recent call last):
+    File "junk.py", line 7, in <module>
+      junk()
+  junk()
+  NameError: global name 'afdfaf' is not defined
+
+* Concurrency
+
+* A non concurrent example
+  var langs = []Lang{
+  	Lang{name: "Go", url: "http://golang.org"},
+  	Lang{name: "Python", url: "http://python.org"},
+  	Lang{name: "Perl", url: "https://www.perl.org/"}}
+
+.play geturl.go /^func count/,/^}/
+(Everything here is standard lib! [batteries included*])
+
+* What can you do with Go?
+
+* Examples
+
+This presentation is done with Go [present]
+- present
+- reads plain text .slide format
+
+Docker
+InfluxDB
+Kubernetes
+Etcd
+
+* SNMP/HTTP examples
+[wip]
+
+* What can you do?
+GoBGP
+
+- integrate a BGP daemon with another application
+
+Custom packet analyzer (gopacket)
+
+- capture packets, and do _something_ with them
+SNMP
+
+- gnsnmp
+NETCONF
+
+- go-netconf, go-junos
+
+gRPC
+
+- *streaming* *telemetry!!*
+
+
+* Who uses Go?
+
+Docker.io
+Uber
+Cloudflare
+
+Soundcloud
+
+Prometheus
+
+Google (of course)
