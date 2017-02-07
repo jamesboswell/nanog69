@@ -91,6 +91,11 @@ You will not catch this until *junk()* is called
 .play geturl.go /^func count/,/^}/
 (Everything here is standard lib! [batteries included*])
 
+* A concurrent example
+Communicate with channels
+.play congeturl.go /^func count/,/^}/
+
+
 * What can you do with Go?
 
 This presentation is done with Go [present]
