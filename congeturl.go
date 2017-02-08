@@ -22,22 +22,24 @@ var langs = []Lang{
 func main() {
 	start := time.Now()
 	results := make(chan string)
+	n := 0
 	for _, l := range langs {
+		n++
 		go count(l.name, l.url, results)
 	}
 
-	for c := range results {
-		fmt.Print(c)
+	for i := 0; i < n; i++ {
+		fmt.Print(<-results)
 	}
 
 	fmt.Println("Total time: ", time.Since(start))
 }
 
-func count(name string, url string, results *chan string) {
+func count(name string, url string, results chan string) {
 	start := time.Now()
 	r, err := http.Get(url)
 	if err != nil {
-		fmt.Printf("%s: %s", name, err)
+		results <- fmt.Sprintf("%s: %s", name, err)
 		return
 	}
 	n, _ := io.Copy(ioutil.Discard, r.Body)
