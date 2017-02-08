@@ -6,9 +6,12 @@ Tags: golang, nanog
 
 James Boswell
 Principal Engineer, Charter Communications
-boswell.jim@gmail.com
+jim@jimboswell.net
+@jimb on gophers slack
+https://invite.slack.golangbridge.org/
 
-http://github.com/jamesboswell/nanog69/
+http://talks.godoc.org/github.com/jamesboswell/nanog69/whygo.slide
+
 Thank you!
 
 * what this is not....
@@ -16,6 +19,7 @@ Not here to bash Python   .... I ❤️ Python
 Not a tutorial
 Not a comprehensive review, just my experiences
 Not a plug for Google .... (psst...Google ping me ;-)
+.image talks.png
 
 * So why did I start in Go?
 
@@ -43,8 +47,10 @@ A former colleague told me to learn Go...we need Go people here...
 
 #.code x.go /^func main/,/^}/ HLfmt
 .play x.go
+.image run.png
 
 * Why Go?
+.image gopherbw.png _ 300
 
 * Unicode support with no fuss
 .play for.go
@@ -68,7 +74,7 @@ Can you avoid this in Python?  Yes you can but you MUST declare your types
 An integer is always an integer
 .play integer.go /^func main/,/^}/
 
-* Dynamic Typing
+* Dynamic Typing fun...
 
 _Dynamic_ compilation can result in errors that exist in code, but are not detected
 .code junk.py
@@ -79,9 +85,10 @@ You will not catch this until *junk()* is called
       junk()
   junk()
   NameError: global name 'afdfaf' is not defined
+.image pkg.png
 
 * Concurrency
-
+.image gophercomplex6.jpg
 * A non concurrent example
   var langs = []Lang{
   	Lang{name: "Go", url: "http://golang.org"},
@@ -89,12 +96,12 @@ You will not catch this until *junk()* is called
   	Lang{name: "Perl", url: "https://www.perl.org/"}}
 
 .play geturl.go /^func count/,/^}/
-(Everything here is standard lib! [batteries included*])
+
 
 * A concurrent example
 Communicate with channels
 .play congeturl.go /^func count/,/^}/
-
+(Everything here is standard lib! [batteries included*])
 
 * What can you do with Go?
 
@@ -108,7 +115,7 @@ Custom packet analyzer (gopacket)
 - capture packets, and do _something_ with them
 SNMP
 
-- gnsnmp
+- gosnmp
 NETCONF
 
 - go-netconf, go-junos
@@ -117,18 +124,46 @@ gRPC
 
 - *streaming* *telemetry!!*
 
-* SNMP/HTTP examples
-[wip]
+* SNMP example
+
+        // setup our session
+        gosnmp.Default.Target = 10.1.2.3
+        gosnmp.Default.Community = "shhhsecret"
+        // connect
+        err := gosnmp.Default.Connect()
+        // handle a failure
+        if err != nil {
+                fmt.Printf("Connect err: %v\n", err)
+                os.Exit(1)
+        }
+        defer gosnmp.Default.Conn.Close()
+
+        // performa BulkWalk and send to PrintValue func
+        err = gosnmp.Default.BulkWalk(oid, poller.PrintValue)
+        if err != nil {
+                fmt.Printf("Walk Error: %v\n", err)
+                os.Exit(1)
+        }
 
 
 * Who uses Go?
 
-Docker.io
-Uber
-Cloudflare
+- Docker.io
+- Uber
+- Cloudflare
+- Soundcloud
+- Google (of course)
 
-Soundcloud
+Apps
 
-Prometheus
+- Prometheus
+- Grafana
+- InfluxDB
+- *Docker*
+and many more...
 
-Google (of course)
+* Community
+.link https://invite.slack.golangbridge.org  Gophers Slack
+.link https://reddit.com/r/golang
+
+.link https://groups.google.com/forum/#!forum/golang-nuts golang-nuts on Google Groups
