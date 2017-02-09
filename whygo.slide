@@ -93,17 +93,26 @@ You will not catch this until *junk()* is called
 * Concurrency
 .image gophercomplex6.jpg
 * A non concurrent example
+  // URLs with mock load times for Go Playground
   var langs = []Lang{
-  	Lang{name: "Go", url: "http://golang.org"},
-  	Lang{name: "Python", url: "http://python.org"},
-  	Lang{name: "Perl", url: "https://www.perl.org/"}}
+  	Lang{name: "Go", url: "http://golang.org", loadtime: parse("86.900303ms")},
+  	Lang{name: "Python", url: "http://python.org", loadtime: parse("207.981306ms")},
+  	Lang{name: "Perl", url: "https://www.perl.org/", loadtime: parse("376.4593ms")}}
 
-.play geturl.go /^func count/,/^}/
+.code geturl.go /^func mockhttpGet/,/^}/
+.play geturl.go /^func main/,/^}/
+Total time = total time of all page "loads" summed
+_serial_ _operations_
 
 
 * A concurrent example
 Communicate with channels
-.play congeturl.go /^func count/,/^}/
+
+.code congeturl.go /^func mockhttpGet/,/^}/
+.play congeturl.go /START OMIT/,/END OMIT/
+_concurrent_ _operations_ - each mockhttpGet is independent
+Total time = page "load" time of last Get to complete
+
 (Everything here is standard lib! [batteries included*])
 
 * What can you do with Go?
