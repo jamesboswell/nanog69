@@ -11,7 +11,6 @@ jim@jimboswell.net
 https://invite.slack.golangbridge.org/
 
 http://talks.godoc.org/github.com/jamesboswell/nanog69/whygo.slide
-
 Thank you!
 
 * what this is not....
@@ -69,12 +68,12 @@ Sample Python code
 .play badinteger.py
 
   $ python2 badinteger.py                                                                                                                                                                            130 ↵
-  16
-  42
+  (16, <type 'int'>)
+  ('42', <type 'str'>)  ## number should be an integer, right?
 
-Can you avoid this in Python?  Yes you can but you MUST declare your types
+Can you avoid this in Python? Yes to some extent, but easy to override.
 
-An integer is always an integer
+In Go an integer is always an integer, unless explicitly converted.
 .play integer.go /^func main/,/^}/
 
 * Dynamic Typing fun...
