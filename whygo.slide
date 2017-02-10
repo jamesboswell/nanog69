@@ -1,7 +1,7 @@
 #Go for Network Ops
 Why Go?
 NANOG 69 Washington, DC
-15:00 7 Feb 2017
+21:00 8 Feb 2017
 Tags: golang, nanog
 
 James Boswell
@@ -71,7 +71,7 @@ Sample Python code
   (16, <type 'int'>)
   ('42', <type 'str'>)  ## number should be an integer, right?
 
-Can you avoid this in Python? Yes to some extent, but easy to override.
+Can you avoid this in Python? Yes to some extent, but easy to overwrite variables.
 
 In Go an integer is always an integer, unless explicitly converted.
 .play integer.go /^func main/,/^}/
